@@ -1,21 +1,22 @@
 declare module 'superdocx-client' {
-    export interface ApiClientConfig {
-      baseURL: string;
-      apiKey: string;
-    }
-  
-    export function createApiClient(config: ApiClientConfig): void;
-    export function getApiClient(): any;
-  
-    export interface CompileOptions {
-      jsxContent?: React.ReactElement;  // JSX content
-      htmlContent?: string;  // Optional HTML content
-      customTailwindConfig?: string;
-      customCSS?: string;
-    }
-  
-    export function compileHtml(options: CompileOptions): Promise<any>;
-  
-    import { FC } from 'react';
-    export const PageBreak: FC;
+  import { FC, ImgHTMLAttributes, ReactElement } from 'react';
+
+  export interface ApiClientConfig {
+    baseURL: string;
+    apiKey: string;
   }
+
+  export function createApiClient(config: ApiClientConfig): void;
+  export function getApiClient(): any;
+
+  export interface CompileOptions {
+    jsxContent?: ReactElement;  // JSX content
+    htmlContent?: string;  // Optional HTML content
+    customTailwindConfig?: string;
+    customCSS?: string;
+    autoDownload?: boolean;  // New autoDownload option
+  }
+
+  export const PageBreak: FC;
+  export function compileHtml(options: CompileOptions): Promise<any>;
+}
